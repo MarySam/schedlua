@@ -52,6 +52,14 @@ function Task.setParams(self, params)
 	return self;
 end
 
+--A function that sets the task priority.
+function Task.setPriority(self, priority)
+	self.priority = priority;
+	
+	return self;
+end
+	
+
 function Task.resume(self)
 --print("Task, RESUMING: ", unpack(self.params));
 	return coroutine.resume(self.routine, unpack(self.params));

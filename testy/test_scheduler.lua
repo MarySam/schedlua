@@ -32,6 +32,7 @@ end
 local function main()
 	local t1 = spawn(Scheduler, task1)
 	local t2 = spawn(Scheduler, task2)
+	
 
 	while (true) do
 		--print("STATUS: ", t1:getStatus(), t2:getStatus())
@@ -42,6 +43,28 @@ local function main()
 	end
 end
 
-main()
+local function MarysPriorities()
+	pq = priorityQueue()
+
+	tasks = {
+    	{3, 'C'},
+    	{4, 'D'},
+    	{5, 'E'},
+    	{1, 'A'},
+    	{2, 'B'}
+	}
+ 
+	for _, task in ipairs(tasks) do
+	    print(string.format("Enqueing: %d - %s", unpack(task)))
+	    pq:enqueue(unpack(task))
+	end
+	 
+	for prio, task in pq.dequeue, pq do
+	    print(string.format("Dequeuing: %d - %s", prio, task))
+	end
+
+end
+
+MarysPriorities()
 
 

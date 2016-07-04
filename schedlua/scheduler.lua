@@ -1,7 +1,7 @@
 
 local ffi = require("ffi");
 
-local Queue = require("schedlua.queue")
+local Queue = require("schedlua.priorityQueue")
 local Task = require("schedlua.task");
 
 
@@ -30,7 +30,8 @@ local Scheduler_mt = {
 function Scheduler.init(self, ...)
 	--print("==== Scheduler.init ====")
 	local obj = {
-		TasksReadyToRun = Queue();
+		--Creating a Queue called TasksReadyToRun
+		TasksReadyToRun = priorityQueue();
 	}
 	setmetatable(obj, Scheduler_mt)
 	
